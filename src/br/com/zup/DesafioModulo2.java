@@ -34,10 +34,22 @@ public class DesafioModulo2 {
                 String email = input.nextLine();
                 System.out.println("Digite agora o CPF do funcionário :");
                 String cpf = input.nextLine();
-                System.out.println("Funcionário incluído com sucesso!\n");
 
+                if (funcionarios.size() != 0) {
+                    for (String cpfRepetido : funcionarios.keySet()) {
+                        if (cpfRepetido.equals(cpf)) {
+                            System.out.println("CPF já cadastrado!");
+                        } else {
+                            funcionarios.put(cpf, " Nome: " + nome + " Telefone: " + telefone + " E-mail: " + email + ".");
+                            System.out.println("Funcionário incluído com sucesso!\n");
+                        }
+                    }
 
-                funcionarios.put(cpf, " Nome: " + nome + " Telefone: " + telefone + " E-mail: " + email + ".");
+                } else {
+                    funcionarios.put(cpf, " Nome: " + nome + " Telefone: " + telefone + " E-mail: " + email + ".");
+                    System.out.println("Funcionário incluído com sucesso!\n");
+                }
+
 
             } else if (opcao == 2) {
                 //Visualizar a lista de funcionários cadastrados no gerenciador.
@@ -46,21 +58,22 @@ public class DesafioModulo2 {
                     System.out.println();
                 }
 
-            } else  if (opcao == 3) {
-            // Removendo um funcionário.
+            } else if (opcao == 3) {
+                // Removendo um funcionário.
                 System.out.println("Por favor, digite o CPF do funcionário a ser removido: ");
                 String cpfASerRemovido = input.nextLine();
                 String cpfRemove = "";
 
-                for ( String cpfRemovido: funcionarios.keySet()) {
-                    if ( cpfRemovido.equals(cpfASerRemovido)){
+                for (String cpfRemovido : funcionarios.keySet()) {
+                    if (cpfRemovido.equals(cpfASerRemovido)) {
                         System.out.println("Funcionário removido com sucesso!");
                         cpfRemove = cpfASerRemovido;
                     }
                 }
                 funcionarios.remove(cpfRemove);
 
-            }else if (opcao == 4) {
+            } else if (opcao == 4) {
+                // Encerrando o gerenciador.
                 chave = false;
                 System.out.println("YOUCAN finalizado com sucesso!");
             }
